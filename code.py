@@ -5,6 +5,10 @@ greetings = ["Hello!", "Welcome!", "welcome to the chat room","hey!!"]
 goodbyes = ["Bye!", "Goodbye!", "Nice meeting you","Thanks for coming"]
 keywords = [["cat","cats","dog","dogs","pet","pets"],["brother","sister","mother","father","family"],["gaming","coding","ai","sports","reading","hobbies"]]
 responses =[["what is your pet's name?\n","what sort of pet do you have?\n","how old is your pet?\n"],["who are you closest to in your family?\n","how many people are in your direct family?\n","what do you enjoy doing with your family?\n"],["tell me about your hobbies\n","what hobbies do you have?\n","what specificaly do you enjoy doing?\n"]]
+blank = []
+responses.extend(blank)
+keywords.extend(blank)
+        
 pets = {
     "name": None,
     "age": None,
@@ -20,6 +24,7 @@ hobbies = {
 print(random.choice(greetings))
 user = ""
 def main():
+    tmp = 0
     for i in range(len(keywords)):
         for j in range(len(keywords[i])):
             if keywords[i][j] in user:
@@ -29,7 +34,11 @@ def main():
                     fcon()
                 elif i==2:
                     hcon()
-                
+    else:
+        so = input("add prompt\n")
+        keywords.append(user)
+        responses.append(so)
+        print(keywords+responses)
 
 def pcon():
     pets["name"]=input(responses[0][0])
